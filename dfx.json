@@ -1,0 +1,26 @@
+{
+  "canisters": {
+    "SMAGR_backend": {
+      "main": "src/SMAGR_backend/main.mo",
+      "type": "motoko"
+    },
+    "SMAGR_frontend": {
+      "dependencies": [
+        "SMAGR_backend"
+      ],
+      "source": [
+        "src/SMAGR_frontend/dist"
+      ],
+      "type": "assets",
+      "workspace": "SMAGR_frontend"
+    }
+  },
+  "defaults": {
+    "build": {
+      "args": "",
+      "packtool": ""
+    }
+  },
+  "output_env_file": ".env",
+  "version": 1
+}
