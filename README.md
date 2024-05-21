@@ -1,59 +1,114 @@
-# `SMAGR`
+# Project Title: Agreement Management Application
 
-Welcome to your new `SMAGR` project and to the Internet Computer development community. By default, creating a new project adds this README and some template files to your project directory. You can edit these template files to customize your project and to include your own code to speed up the development cycle.
+## Description
 
-To get started, you might want to explore the project directory structure and the default configuration file. Working with this project in your development environment will not affect any production deployment or identity tokens.
+The Agreement Management Application is a decentralized application (dApp) built on the Internet Computer using the Motoko programming language. The application allows users to register and manage agreements between multiple parties securely and efficiently. Each agreement includes details such as the title, description, and the involved parties.
 
-To learn more before you start working with `SMAGR`, see the following documentation available online:
+## Features
 
-- [Quick Start](https://internetcomputer.org/docs/current/developer-docs/setup/deploy-locally)
-- [SDK Developer Tools](https://internetcomputer.org/docs/current/developer-docs/setup/install)
-- [Motoko Programming Language Guide](https://internetcomputer.org/docs/current/motoko/main/motoko)
-- [Motoko Language Quick Reference](https://internetcomputer.org/docs/current/motoko/main/language-manual)
+- **User Registration**: Users can register with a unique `Principal` identifier, email, full name, and profile picture.
+- **Agreement Creation**: Users can create agreements specifying the title, description, and involved parties.
+- **CRUD Operations**: The application supports Create, Read, Update, and Delete (CRUD) operations for both users and agreements.
 
-If you want to start working on your project right away, you might want to try the following commands:
+## Technologies Used
 
-```bash
-cd SMAGR/
-dfx help
-dfx canister --help
+- **Motoko**: The primary programming language used to develop the backend canister on the Internet Computer.
+- **JavaScript**: Used for frontend development to interact with the Motoko backend.
+- **HTML/CSS**: Basic web technologies for building the user interface.
+- **Internet Computer SDK**: Provides tools and libraries to develop and deploy the dApp.
+
+## Prerequisites
+
+- **Node.js**: Ensure you have Node.js installed to run the frontend.
+- **DFX SDK**: The DFINITY SDK (dfx) is required to develop and deploy the application on the Internet Computer.
+
+## Installation
+
+1. **Clone the Repository**:
+
+   ```bash
+   git clone https://github.com/shikamusenge/smart_safe_contract.git
+   cd agreement-management-app
+   ```
+
+2. **Install Dependencies**:
+
+   ```bash
+   npm install
+   ```
+
+3. **Start the Local Replica**:
+
+   ```bash
+   dfx start --background
+   ```
+
+4. **Deploy the Canisters**:
+
+   ```bash
+   dfx deploy
+   ```
+
+5. **Run the Frontend**:
+   ```bash
+   npm start
+   ```
+
+## Usage
+
+### Register a User
+
+1. Navigate to the user registration form in the application.
+2. Fill in the required details: Full Name, Email, and Profile Picture URL.
+3. Click the "Register" button to create a new user.
+
+### Create an Agreement
+
+1. Navigate to the agreement creation form.
+2. Fill in the required details: Agreement Title, Description, and Parties (list of Principals).
+3. Click the "Create Agreement" button to store the agreement.
+
+### Manage Agreements
+
+- **View Agreements**: Users can view a list of all agreements they are part of.
+- **Edit Agreements**: Users can edit the details of an agreement they have created.
+- **Delete Agreements**: Users can delete an agreement.
+
+## Project Structure
+
+```
+agreement-management-app/
+├── src/
+│   ├── backend/
+│   │   ├── main.mo
+│   │   └── ... (other Motoko files)
+│   ├── frontend/
+│   │   ├── src/
+│   │   │   ├── index.html
+│   │   │   ├── index.js
+│   │   │   ├── style.css
+│   │   │   └── ... (other frontend files)
+├── dfx.json
+├── package.json
+└── README.md
 ```
 
-## Running the project locally
+## Contributing
 
-If you want to test your project locally, you can use the following commands:
+Contributions are welcome! Please open an issue or submit a pull request for any improvements or bug fixes.
 
-```bash
-# Starts the replica, running in the background
-dfx start --background
+## Acknowledgements
 
-# Deploys your canisters to the replica and generates your candid interface
-dfx deploy
-```
+- The DFINITY Foundation for providing the Internet Computer and SDK.
+- The Motoko language developers for their extensive documentation and support.
+- All contributors and users who provided feedback and suggestions.
 
-Once the job completes, your application will be available at `http://localhost:4943?canisterId={asset_canister_id}`.
+---
 
-If you have made changes to your backend canister, you can generate a new candid interface with
+## Contact
 
-```bash
-npm run generate
-```
+For any inquiries or support, please contact [shikamusenge@tyaza.org](shikamusenge@tyaza.org).
 
-at any time. This is recommended before starting the frontend development server, and will be run automatically any time you run `dfx deploy`.
+---
 
-If you are making frontend changes, you can start a development server with
-
-```bash
-npm start
-```
-
-Which will start a server at `http://localhost:8080`, proxying API requests to the replica at port 4943.
-
-### Note on frontend environment variables
-
-If you are hosting frontend code somewhere without using DFX, you may need to make one of the following adjustments to ensure your project does not fetch the root key in production:
-
-- set`DFX_NETWORK` to `ic` if you are using Webpack
-- use your own preferred method to replace `process.env.DFX_NETWORK` in the autogenerated declarations
-  - Setting `canisters -> {asset_canister_id} -> declarations -> env_override to a string` in `dfx.json` will replace `process.env.DFX_NETWORK` with the string in the autogenerated declarations
-- Write your own `createActor` constructor
+This `README.md` file provides a comprehensive overview of the Agreement Management Application, its features, and usage instructions. Feel free to customize and expand it as needed for your specific project.
