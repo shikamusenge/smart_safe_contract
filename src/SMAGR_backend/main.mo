@@ -24,10 +24,18 @@ actor {
     var users = HashMap.HashMap<Principal, User>(10, Principal.equal, Principal.hash);
     var agreements = HashMap.HashMap<Principal, Agreement>(10, Principal.equal, Principal.hash);
 
-    public func register(user: User): async Text {
-        users.put(user.userId, user);
-        return "User registered successfully!";
+  public shared(msg) func register(user: User): async Text {
+    let caller : Principal = msg.caller;
+    switch (users.get(caller)) {
+        case null {
+            users.put(caller, user);
+            return "User registered successfully!";
+        };
+        case (?_) {
+            return "Error: User already exists!";
+        };
     };
+};
 
     public query func getUser(userId: Principal): async ?User {
         return users.get(userId);
